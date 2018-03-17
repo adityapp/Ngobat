@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.axce.ngobat.Fragment.CekFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="#fff"
+        android:elevation="4dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/body"/>
+
+        <Button
+            android:id="@+id/btn_kepala"
+            android:layout_width="38dp"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/btn_badan"
+            android:layout_width="78dp"
+            android:layout_height="153dp"
+            android:layout_marginTop="55dp"
+            android:background="@android:color/transparent"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btn_tangan_kiri"
+            android:layout_width="80dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="62dp"
+            android:layout_toLeftOf="@id/btn_badan"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/btn_tangan_kanan"
+            android:layout_width="80dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="62dp"
+            android:background="@android:color/transparent"
+            android:layout_toRightOf="@id/btn_badan"/>
+
+        <Button
+            android:id="@+id/btn_kaki"
+            android:layout_width="110dp"
+            android:layout_height="250dp"
+            android:layout_below="@id/btn_badan"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="38dp"
+        android:text="Generate"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_white"/>
+
+
+</LinearLayout>

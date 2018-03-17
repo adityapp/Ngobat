@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_cek"
+        android:enabled="true"
+        android:icon="@drawable/logo_icon_gray"
+        android:title="Cek Penyakit"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_apotek"
+        android:enabled="true"
+        android:icon="@drawable/ic_location_searching_24dp"
+        android:title="Cari Apotek"
+        app:showAsAction="always" />
+</menu>
