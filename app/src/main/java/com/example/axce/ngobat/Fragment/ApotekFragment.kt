@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,22 +64,21 @@ class ApotekFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Connectio
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
+        Log.d("dariMap", "hello dari map")
         gMap = googleMap!!
         gMap.uiSettings.isMapToolbarEnabled = false
         getMarker()
+        updateLocation()
         gMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
-            override fun onMarkerClick(marker: Marker?): Boolean {
-                if (marker != null) {
-                    for (i in 0..listApotek.size - 1) {
-                        if (listApotek.get(i).nama.equals(marker.title)) {
-                            selectMarker = listApotek.get(i).location
-                        }
-                    }
+            override fun onMarkerClick(marker: Marker): Boolean {
+                direct.setOnClickListener {
+                    val gmmIntentUri = Uri.parse("google.navigation:q=" + marker.position.latitude + "," + marker.position.longitude)
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                    startActivity(mapIntent)
                 }
                 return false
             }
         })
-        updateLocation()
     }
 
     private fun updateLocation() {
@@ -92,15 +92,6 @@ class ApotekFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Connectio
                                     LatLng(location.latitude, location.longitude), 15f)
                             )
                             gMap.animateCamera(CameraUpdateFactory.zoomTo(15f), 2000, null)
-                            direct.setOnClickListener {
-                                if (selectMarker == null) {
-                                    Toast.makeText(activity, "Tujuan tidak ada", Toast.LENGTH_SHORT).show()
-                                } else {
-                                    val gmmIntentUri = Uri.parse("google.navigation:q=" + selectMarker?.getLatitude() + "," + selectMarker?.getLongitude())
-                                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                                    startActivity(mapIntent)
-                                }
-                            }
                         }
                     })
             gMap.isMyLocationEnabled = true
@@ -116,6 +107,7 @@ class ApotekFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Connectio
                         gMap.addMarker(MarkerOptions().position(LatLng(apotek.location.latitude, apotek.location.longitude))
                                 .title(apotek.nama).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)))
                         listApotek.add(apotek)
+                        Log.d("cekData", apotek.nama)
                     }
                 }
             }

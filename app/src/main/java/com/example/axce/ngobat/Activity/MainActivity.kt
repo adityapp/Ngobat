@@ -8,16 +8,24 @@ import android.support.v4.app.ActivityCompat
 import android.view.MenuItem
 import com.example.axce.ngobat.Fragment.ApotekFragment
 import com.example.axce.ngobat.Fragment.CekFragment
+import com.example.axce.ngobat.Model.Gejala
 import com.example.axce.ngobat.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_PERMISSION_LOCATION = 9001
+
+    companion object {
+        var selectGejala = ArrayList<Gejala>()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction().replace(R.id.fragment_frame, CekFragment()).commit()
+
+        selectGejala.clear()
 
         bottom_navigation.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
