@@ -35,18 +35,27 @@ class KepalaActivity : AppCompatActivity() {
         rv_kepala.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_kepala.adapter = adapter
 
-        addSelect()
+        selectAdapter = RvSelectGejalaAdapter(this)
+        recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view.adapter = selectAdapter
+
         adapter.setOnItemClickListener(object : RvGejalaAdapter.OnItemClickListener {
             override fun onItemClick() {
-                addSelect()
+                selectAdapter.notifyDataSetChanged()
             }
         })
-    }
 
-    fun addSelect(){
-        selectAdapter = RvSelectGejalaAdapter(this@KepalaActivity)
-        recycler_view.layoutManager = LinearLayoutManager(this@KepalaActivity, LinearLayoutManager.HORIZONTAL, false)
-        recycler_view.adapter = selectAdapter
+        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
+            override fun onItemClick(p0: Gejala) {
+                selectAdapter.notifyDataSetChanged()
+                for(i in gejala){
+                    if (i == p0){
+                        i.select = false
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

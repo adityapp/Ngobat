@@ -14,6 +14,7 @@ import com.example.axce.ngobat.Activity.KakiActivity
 import com.example.axce.ngobat.Activity.KepalaActivity
 import com.example.axce.ngobat.Activity.TanganActivity
 import com.example.axce.ngobat.Adapter.RvSelectGejalaAdapter
+import com.example.axce.ngobat.Model.Gejala
 
 import com.example.axce.ngobat.R
 import kotlinx.android.synthetic.main.fragment_cek.view.*
@@ -56,13 +57,19 @@ class CekFragment : Fragment() {
             val intent = Intent(activity, KakiActivity::class.java)
             activity.startActivity(intent)
         })
+        selectAdapter = RvSelectGejalaAdapter(activity)
+        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = selectAdapter
+        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
+            override fun onItemClick(p0: Gejala) {
+                selectAdapter.notifyDataSetChanged()
+            }
+        })
         return view
     }
 
     override fun onResume() {
         super.onResume()
-        selectAdapter = RvSelectGejalaAdapter(activity)
-        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = selectAdapter
+        selectAdapter.notifyDataSetChanged()
     }
 }
