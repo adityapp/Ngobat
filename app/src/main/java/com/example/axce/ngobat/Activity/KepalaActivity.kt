@@ -19,9 +19,8 @@ class KepalaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kepala)
 
-        val actionBar = supportActionBar
-        actionBar?.title = "Kepala"
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar.title = "Kepala"
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Pusing"))
         gejala.add(Gejala("Hidung tersumbat"))
@@ -47,13 +46,13 @@ class KepalaActivity : AppCompatActivity() {
 
         selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
             override fun onItemClick(p0: Gejala) {
-                selectAdapter.notifyDataSetChanged()
                 for(i in gejala){
                     if (i == p0){
                         i.select = false
                         adapter.notifyDataSetChanged()
                     }
                 }
+                selectAdapter.notifyDataSetChanged()
             }
         })
     }

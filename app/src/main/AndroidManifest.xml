@@ -28,7 +28,7 @@
         <activity android:name=".Activity.KepalaActivity" />
         <activity android:name=".Activity.BadanActivity" />
         <activity android:name=".Activity.TanganActivity" />
-        <activity android:name=".Activity.KakiActivity"></activity>
+        <activity android:name=".Activity.KakiActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -36,6 +36,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCdTpX6YJ6z9oLqUQXAW4ybal6L47GuIxo" />
+
+        <activity android:name=".Activity.FindObatActivity"></activity>
     </application>
 
 </manifest>

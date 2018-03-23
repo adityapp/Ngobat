@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.axce.ngobat.Activity.KepalaActivity
 import com.example.axce.ngobat.Activity.MainActivity
 import com.example.axce.ngobat.Model.Gejala
 import com.example.axce.ngobat.R

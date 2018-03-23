@@ -9,14 +9,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.axce.ngobat.Activity.BadanActivity
-import com.example.axce.ngobat.Activity.KakiActivity
-import com.example.axce.ngobat.Activity.KepalaActivity
-import com.example.axce.ngobat.Activity.TanganActivity
+import com.example.axce.ngobat.Activity.*
 import com.example.axce.ngobat.Adapter.RvSelectGejalaAdapter
 import com.example.axce.ngobat.Model.Gejala
 
 import com.example.axce.ngobat.R
+import kotlinx.android.synthetic.main.fragment_cek.*
 import kotlinx.android.synthetic.main.fragment_cek.view.*
 
 
@@ -25,13 +23,19 @@ import kotlinx.android.synthetic.main.fragment_cek.view.*
  */
 class CekFragment : Fragment() {
     lateinit var selectAdapter: RvSelectGejalaAdapter
-    lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_cek, container, false)
 
-        recyclerView = view.findViewById(R.id.recycler_view)
+        selectAdapter = RvSelectGejalaAdapter(activity)
+        recycler_view.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        recycler_view.adapter = selectAdapter
+        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
+            override fun onItemClick(p0: Gejala) {
+                selectAdapter.notifyDataSetChanged()
+            }
+        })
 
         view.btn_kepala.setOnClickListener({
             val intent = Intent(activity, KepalaActivity::class.java)
@@ -57,14 +61,12 @@ class CekFragment : Fragment() {
             val intent = Intent(activity, KakiActivity::class.java)
             activity.startActivity(intent)
         })
-        selectAdapter = RvSelectGejalaAdapter(activity)
-        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = selectAdapter
-        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
-            override fun onItemClick(p0: Gejala) {
-                selectAdapter.notifyDataSetChanged()
-            }
+
+        btn_generate.setOnClickListener({
+            val intent = Intent(activity, FindObatActivity::class.java)
+            activity.startActivity(intent)
         })
+
         return view
     }
 

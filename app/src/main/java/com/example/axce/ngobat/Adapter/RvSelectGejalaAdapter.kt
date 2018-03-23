@@ -17,9 +17,6 @@ import kotlinx.android.synthetic.main.card_list_select_gejala.view.*
 class RvSelectGejalaAdapter(val context: Context): RecyclerView.Adapter<RvSelectGejalaAdapter.ViewHolder>(){
     private lateinit var onItemClickListener: RvSelectGejalaAdapter.OnItemClickListener
 
-    fun setOnItemClickListener(onItemClickListener: RvSelectGejalaAdapter.OnItemClickListener) {
-        this.onItemClickListener = onItemClickListener
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvSelectGejalaAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_list_select_gejala, parent, false)
@@ -45,5 +42,9 @@ class RvSelectGejalaAdapter(val context: Context): RecyclerView.Adapter<RvSelect
 
     interface OnItemClickListener {
         fun onItemClick(p0 : Gejala)
+    }
+
+    fun setOnItemClickListener(onItemClickListener: RvSelectGejalaAdapter.OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
     }
 }
