@@ -9,8 +9,11 @@ import android.view.MenuItem
 import com.example.axce.ngobat.Fragment.ApotekFragment
 import com.example.axce.ngobat.Fragment.CekFragment
 import com.example.axce.ngobat.Model.Gejala
+import com.example.axce.ngobat.Object.DialogBox
 import com.example.axce.ngobat.R
 import kotlinx.android.synthetic.main.activity_main.*
+
+
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_PERMISSION_LOCATION = 9001
@@ -38,9 +41,24 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        displayDialog()
+
         //permission
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_PERMISSION_LOCATION)
+        }
+    }
+
+    fun displayDialog(){
+        var isFirst = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirst", true)
+        if (isFirst){
+            var alert = DialogBox()
+            alert.showDialog(this)
+
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("isFirst", false)
+                    .apply();
         }
     }
 }

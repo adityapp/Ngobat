@@ -31,6 +31,8 @@
                 android:layout_height="wrap_content"
                 android:text="Nama Obat"
                 android:textStyle="bold"
+                android:maxLines="2"
+                android:maxWidth="250dp"
                 android:textSize="18sp"/>
             
             <TextView

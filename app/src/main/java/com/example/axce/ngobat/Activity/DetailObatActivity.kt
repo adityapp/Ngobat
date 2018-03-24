@@ -30,7 +30,7 @@ class DetailObatActivity : AppCompatActivity() {
         for (i in 0..obat.menangani.size - 1) {
             listMenangani += obat.menangani.get(i)
             if (i == obat.menangani.size - 1) {
-                listMenangani += "."
+                listMenangani += ".\n"
             }else{
                 listMenangani += ", "
             }

@@ -24,6 +24,9 @@ class TanganActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Memar"))
+        gejala.add(Gejala("Luka"))
+        gejala.add(Gejala("Melepuh"))
+        gejala.add(Gejala("Gatal-gatal"))
 
         adapter = RvGejalaAdapter(this)
         adapter.dataSet = gejala

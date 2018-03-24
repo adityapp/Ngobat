@@ -29,6 +29,7 @@ class KepalaActivity : AppCompatActivity() {
         gejala.add(Gejala("Bibir pecah-pecah"))
         gejala.add(Gejala("Panas"))
         gejala.add(Gejala("Mata merah"))
+        gejala.add(Gejala("Tenggorokan gatal"))
 
         adapter = RvGejalaAdapter(this)
         adapter.dataSet = gejala

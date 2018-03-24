@@ -28,6 +28,9 @@ class KakiActivity : AppCompatActivity() {
         gejala.add(Gejala("Jamuran"))
         gejala.add(Gejala("Kram"))
         gejala.add(Gejala("Keseleo"))
+        gejala.add(Gejala("Luka"))
+        gejala.add(Gejala("Melepuh"))
+        gejala.add(Gejala("Gatal-gatal"))
 
         adapter = RvGejalaAdapter(this)
         adapter.dataSet = gejala

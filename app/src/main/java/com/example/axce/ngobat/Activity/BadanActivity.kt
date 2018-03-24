@@ -24,6 +24,10 @@ class BadanActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Perut kembung"))
+        gejala.add(Gejala("Menggigil"))
+        gejala.add(Gejala("Mual"))
+        gejala.add(Gejala("Tidak nafsu makan"))
+        gejala.add(Gejala("Diare"))
 
         adapter = RvGejalaAdapter(this)
         adapter.dataSet = gejala
