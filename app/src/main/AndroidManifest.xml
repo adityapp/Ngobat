@@ -37,7 +37,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCdTpX6YJ6z9oLqUQXAW4ybal6L47GuIxo" />
 
-        <activity android:name=".Activity.FindObatActivity"></activity>
+        <activity android:name=".Activity.FindObatActivity" />
+        <activity android:name=".Activity.DetailObatActivity"></activity>
     </application>
 
 </manifest>

@@ -5,16 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.axce.ngobat.Activity.*
 import com.example.axce.ngobat.Adapter.RvSelectGejalaAdapter
 import com.example.axce.ngobat.Model.Gejala
 
 import com.example.axce.ngobat.R
-import kotlinx.android.synthetic.main.fragment_cek.*
 import kotlinx.android.synthetic.main.fragment_cek.view.*
 
 
@@ -29,9 +29,9 @@ class CekFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_cek, container, false)
 
         selectAdapter = RvSelectGejalaAdapter(activity)
-        recycler_view.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        recycler_view.adapter = selectAdapter
-        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener{
+        view.recycler_view.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        view.recycler_view.adapter = selectAdapter
+        selectAdapter.setOnItemClickListener(object : RvSelectGejalaAdapter.OnItemClickListener {
             override fun onItemClick(p0: Gejala) {
                 selectAdapter.notifyDataSetChanged()
             }
@@ -62,9 +62,13 @@ class CekFragment : Fragment() {
             activity.startActivity(intent)
         })
 
-        btn_generate.setOnClickListener({
-            val intent = Intent(activity, FindObatActivity::class.java)
-            activity.startActivity(intent)
+        view.btn_generate.setOnClickListener({
+            if (MainActivity.selectGejala.size == 0) {
+                Toast.makeText(activity, "Silahkan masukkan gejala", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(activity, FindObatActivity::class.java)
+                activity.startActivity(intent)
+            }
         })
 
         return view

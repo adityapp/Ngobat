@@ -19,8 +19,9 @@ class BadanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_badan)
 
-        actionBar.title = "Badan"
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        val actionBar = supportActionBar
+        actionBar?.title = "Badan"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Perut kembung"))
 

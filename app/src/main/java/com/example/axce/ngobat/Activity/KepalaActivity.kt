@@ -19,8 +19,9 @@ class KepalaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kepala)
 
-        actionBar.title = "Kepala"
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        val actionBar = supportActionBar
+        actionBar?.title = "Kepala"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Pusing"))
         gejala.add(Gejala("Hidung tersumbat"))

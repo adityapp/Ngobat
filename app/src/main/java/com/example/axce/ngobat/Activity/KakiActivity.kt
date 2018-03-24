@@ -19,8 +19,9 @@ class KakiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kaki)
 
-        actionBar.title= "Kaki"
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        val actionBar = supportActionBar
+        actionBar?.title= "Kaki"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Memar"))
         gejala.add(Gejala("Cantengan"))

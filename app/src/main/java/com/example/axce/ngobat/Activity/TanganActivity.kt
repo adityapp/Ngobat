@@ -19,8 +19,9 @@ class TanganActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tangan)
 
-        actionBar.title = "Tangan"
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        val actionBar = supportActionBar
+        actionBar?.title = "Tangan"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         gejala.add(Gejala("Memar"))
 
