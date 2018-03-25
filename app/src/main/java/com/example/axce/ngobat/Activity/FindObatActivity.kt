@@ -37,25 +37,27 @@ class FindObatActivity : AppCompatActivity() {
     }
 
     fun find() {
+        var temp = ArrayList<Obat>()
         for (i in MainActivity.selectGejala) {
             for (j in obat) {
                 for (k in 0..j.menangani.size - 1) {
                     if (j.menangani.get(k) == i.namaGejala) {
-                        obatSelect.add(j)
+                        temp.add(j)
                         alert.visibility = RelativeLayout.GONE
                     }
                 }
             }
         }
-        removeDuplicate()
+        removeDuplicate(temp)
     }
 
-    fun removeDuplicate() {
-        for (i in 0..obatSelect.size - 1) {
-            for (j in i + 1..obatSelect.size - 1)
-                if (obatSelect.get(i).namaObat == obatSelect.get(j).namaObat) {
-                    obatSelect.remove(obatSelect.get(j))
-                }
+    fun removeDuplicate(array: ArrayList<Obat>) {
+        val cek = HashSet<Obat>()
+        for (i in array) {
+            if (!cek.contains(i)) {
+                obatSelect.add(i)
+                cek.add(i)
+            }
         }
     }
 
